@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_21_205706) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_21_230948) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -18,7 +18,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_205706) do
   create_table "course_professors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "course_id", null: false
     t.uuid "user_id", null: false
-    t.string "user_type", null: false
     t.datetime "started_at"
     t.datetime "ended_at"
     t.datetime "created_at", null: false
@@ -30,7 +29,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_205706) do
   create_table "course_students", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "course_id", null: false
     t.uuid "user_id", null: false
-    t.string "user_type", null: false
     t.datetime "started_at"
     t.datetime "ended_at"
     t.datetime "created_at", null: false
@@ -74,11 +72,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_205706) do
     t.uuid "discussion_question_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "discussion_question_posts_id"
+    t.uuid "discussion_question_post_id"
     t.string "user_type", null: false
     t.index ["course_id"], name: "index_discussion_question_posts_on_course_id"
     t.index ["discussion_question_id"], name: "index_discussion_question_posts_on_discussion_question_id"
-    t.index ["discussion_question_posts_id"], name: "idx_on_discussion_question_posts_id_6f2a9a1b0d"
+    t.index ["discussion_question_post_id"], name: "index_discussion_question_posts_on_discussion_question_post_id"
     t.index ["user_id"], name: "index_discussion_question_posts_on_user_id"
   end
 
@@ -118,11 +116,30 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_205706) do
     t.index ["school_id"], name: "index_faculties_on_school_id"
   end
 
+  create_table "faculty_professors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "user_type", null: false
+    t.uuid "user_id", null: false
+    t.uuid "faculty_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["faculty_id"], name: "index_faculty_professors_on_faculty_id"
+    t.index ["user_type", "user_id"], name: "index_faculty_professors_on_user"
+  end
+
+  create_table "faculty_students", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "user_type", null: false
+    t.uuid "user_id", null: false
+    t.uuid "faculty_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["faculty_id"], name: "index_faculty_students_on_faculty_id"
+    t.index ["user_type", "user_id"], name: "index_faculty_students_on_user"
+  end
+
   create_table "school_professors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.boolean "active", default: true
     t.uuid "user_id", null: false
     t.uuid "school_id", null: false
-    t.string "user_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["school_id"], name: "index_school_professors_on_school_id"
@@ -133,7 +150,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_205706) do
     t.boolean "active"
     t.uuid "user_id", null: false
     t.uuid "school_id", null: false
-    t.string "user_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["school_id"], name: "index_school_students_on_school_id"
@@ -162,7 +178,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_205706) do
   add_foreign_key "discussion_question_post_ratings", "discussion_question_posts"
   add_foreign_key "discussion_question_post_ratings", "users"
   add_foreign_key "discussion_question_posts", "courses"
-  add_foreign_key "discussion_question_posts", "discussion_question_posts", column: "discussion_question_posts_id"
+  add_foreign_key "discussion_question_posts", "discussion_question_posts"
   add_foreign_key "discussion_question_posts", "discussion_questions"
   add_foreign_key "discussion_question_posts", "users"
   add_foreign_key "discussion_question_ratings", "discussion_questions"
@@ -170,6 +186,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_205706) do
   add_foreign_key "discussion_questions", "courses"
   add_foreign_key "discussion_questions", "users"
   add_foreign_key "faculties", "schools"
+  add_foreign_key "faculty_professors", "faculties"
+  add_foreign_key "faculty_students", "faculties"
   add_foreign_key "school_professors", "schools"
   add_foreign_key "school_professors", "users"
   add_foreign_key "school_students", "schools"
