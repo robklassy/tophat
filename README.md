@@ -25,15 +25,26 @@ Install Postgres for your platform if not already installed
 - make the following databases: `tophat_dev`, `tophat_test`, `tophat_prod`
 - make the following user/pass: `test/blah` and `GRANT ALL PRIVILEGES` to the three databases created above
 
+## Redis
+Install Redis server for your platform if not already installed
+- make sure `config/redis.rb` matches your Redis server configuration
+
 ## Bundler
-Bundler lets you install all of the rubygems as listed in Gemfile
+Bundler lets you install all of the rubygems as listed in `Gemfile`
 - go into repo directory
 - `gem install bundler`
 
 ## Gems
-Use bundler to install of the gems
+Use bundler to install all of the gems
 - go into repo directory
 - `bundle install`
 
 ## Database Init
+The databases need to be migrated, this is accomplished by using rails migration files, and must be done for `dev` and `test`
+- go into repo directory
+- `rake db:migrate`
+- `RAILS_ENV=test rake db:migrate`
 
+## Seed
+Run the seeding script to populate the dev environment with some data
+- PENDING
