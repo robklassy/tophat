@@ -1,25 +1,39 @@
 # README
+Tophat Reddit-esque take home assignment from Rob Kalsi
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Install
+Follow steps to get the project up and running on your local
 
-Things you may want to cover:
+## GCC/G++ 
+Install `gcc` and `g++` C/C++ compiler for your platform if not already installed
 
-* Ruby version
+## Clone Repo
+Clone this repo
 
-* System dependencies
+## Ruby Version Manager (RVM) https://rvm.io/
+Install RVM to be able to manage different ruby versions
+- do not install rails at the same time
 
-* Configuration
+## Ruby
+Use RVM to install ruby
+- go into the repo directory
+- `rvm install 3.1.0`
+- note depending on your platform this might need to compile if it can't find pre-compiled binaries
 
-* Database creation
+## Postgres
+Install Postgres for your platform if not already installed
+- make the following databases: `tophat_dev`, `tophat_test`, `tophat_prod`
+- make the following user/pass: `test/blah` and `GRANT ALL PRIVILEGES` to the three databases created above
 
-* Database initialization
+## Bundler
+Bundler lets you install all of the rubygems as listed in Gemfile
+- go into repo directory
+- `gem install bundler`
 
-* How to run the test suite
+## Gems
+Use bundler to install of the gems
+- go into repo directory
+- `bundle install`
 
-* Services (job queues, cache servers, search engines, etc.)
+## Database Init
 
-* Deployment instructions
-
-* ...
-# tophat
