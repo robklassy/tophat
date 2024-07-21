@@ -69,3 +69,4 @@ end
 
 gem "yard"
 gem "rswag"
+gem 'redis'
