@@ -23,6 +23,25 @@ RSpec.describe 'discussion_question_posts', type: :request do
       }
 
       response(200, 'successful') do
+        example 'application/json', :discussion_question_post, {
+          "id"=>"48914fd6-5024-4525-a8b2-9e7d4d108d81",
+          "course_id"=>"0c8afa68-8cd3-4406-9d8f-6708cedf8f01",
+          "user_id"=>"4e803bd5-b0c5-4b95-8f13-4d393842e21b",
+          "content"=>
+          "Professor would it make sense just to you know, break the wand into a million pieces or something so voldy cannot get it?",
+          "posted_at"=>"Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00",
+          "archived_at"=>nil,
+          "deleted_at"=>nil,
+          "edited_at"=>nil,
+          "state"=>nil,
+          "like_count"=>1,
+          "discussion_question_id"=>"731b457a-245c-4878-83da-8ca15b812714",
+          "created_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "updated_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "discussion_question_post_id"=>nil,
+          "user_type"=>"Student"
+        }
+
         let(:id) { DiscussionQuestionPost.all.first.id }
 
         let(:user) do
@@ -64,6 +83,24 @@ RSpec.describe 'discussion_question_posts', type: :request do
       }
 
       response(200, 'successful') do
+        example 'application/json', :discussion_question_post, {
+          "id"=>"48914fd6-5024-4525-a8b2-9e7d4d108d81",
+          "course_id"=>"0c8afa68-8cd3-4406-9d8f-6708cedf8f01",
+          "user_id"=>"4e803bd5-b0c5-4b95-8f13-4d393842e21b",
+          "content"=>
+          "Professor would it make sense just to you know, break the wand into a million pieces or something so voldy cannot get it?",
+          "posted_at"=>"Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00",
+          "archived_at"=>nil,
+          "deleted_at"=>nil,
+          "edited_at"=>nil,
+          "state"=>nil,
+          "like_count"=>-1,
+          "discussion_question_id"=>"731b457a-245c-4878-83da-8ca15b812714",
+          "created_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "updated_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "discussion_question_post_id"=>nil,
+          "user_type"=>"Student"
+        }
         let(:id) { DiscussionQuestionPost.all.last.id }
         let(:user) do
           u = User.all.sample
@@ -127,6 +164,44 @@ RSpec.describe 'discussion_question_posts', type: :request do
       }
 
       response(200, 'successful') do
+        example 'application/json', :discussion_question_post_no_parent, {
+          "id"=>"48914fd6-5024-4525-a8b2-9e7d4d108d81",
+          "course_id"=>"0c8afa68-8cd3-4406-9d8f-6708cedf8f01",
+          "user_id"=>"4e803bd5-b0c5-4b95-8f13-4d393842e21b",
+          "content"=>
+          "Professor would it make sense just to you know, break the wand into a million pieces or something so voldy cannot get it?",
+          "posted_at"=>"Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00",
+          "archived_at"=>nil,
+          "deleted_at"=>nil,
+          "edited_at"=>nil,
+          "state"=>nil,
+          "like_count"=>1,
+          "discussion_question_id"=>"731b457a-245c-4878-83da-8ca15b812714",
+          "created_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "updated_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "discussion_question_post_id"=>nil,
+          "user_type"=>"Student"
+        }
+
+        example 'application/json', :discussion_question_post_with_parent, {
+          "id"=>"48914fd6-5024-4525-a8b2-9e7d4d108d81",
+          "course_id"=>"0c8afa68-8cd3-4406-9d8f-6708cedf8f01",
+          "user_id"=>"4e803bd5-b0c5-4b95-8f13-4d393842e21b",
+          "content"=>
+          "Professor would it make sense just to you know, break the wand into a million pieces or something so voldy cannot get it?",
+          "posted_at"=>"Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00",
+          "archived_at"=>nil,
+          "deleted_at"=>nil,
+          "edited_at"=>nil,
+          "state"=>nil,
+          "like_count"=>1,
+          "discussion_question_id"=>"731b457a-245c-4878-83da-8ca15b812714",
+          "created_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "updated_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "discussion_question_post_id"=>"587b457a-245a-4878-83da-8ca15b812714",
+          "user_type"=>"Student"
+        }
+
         let(:discussion_question_post) do
           c = Course.all.first
           cu = CourseStudent.where(course_id: c.id).sample
@@ -165,6 +240,24 @@ RSpec.describe 'discussion_question_posts', type: :request do
 
     get('show discussion_question_post') do
       response(200, 'successful') do
+        example 'application/json', :discussion_question_post, {
+          "id"=>"48914fd6-5024-4525-a8b2-9e7d4d108d81",
+          "course_id"=>"0c8afa68-8cd3-4406-9d8f-6708cedf8f01",
+          "user_id"=>"4e803bd5-b0c5-4b95-8f13-4d393842e21b",
+          "content"=>
+          "Professor would it make sense just to you know, break the wand into a million pieces or something so voldy cannot get it?",
+          "posted_at"=>"Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00",
+          "archived_at"=>nil,
+          "deleted_at"=>nil,
+          "edited_at"=>nil,
+          "state"=>nil,
+          "like_count"=>1,
+          "discussion_question_id"=>"731b457a-245c-4878-83da-8ca15b812714",
+          "created_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "updated_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "discussion_question_post_id"=>"587b457a-245a-4878-83da-8ca15b812714",
+          "user_type"=>"Student"
+        }
         let(:id) { DiscussionQuestionPost.all.first.id }
 
         after do |example|
@@ -193,6 +286,24 @@ RSpec.describe 'discussion_question_posts', type: :request do
       }
 
       response(200, 'successful') do
+        example 'application/json', :discussion_question_post, {
+          "id"=>"48914fd6-5024-4525-a8b2-9e7d4d108d81",
+          "course_id"=>"0c8afa68-8cd3-4406-9d8f-6708cedf8f01",
+          "user_id"=>"4e803bd5-b0c5-4b95-8f13-4d393842e21b",
+          "content"=>
+          "Professor would it make sense just to you know, break the wand into a million pieces or something so voldy cannot get it?",
+          "posted_at"=>"Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00",
+          "archived_at"=>nil,
+          "deleted_at"=>nil,
+          "edited_at"=>nil,
+          "state"=>nil,
+          "like_count"=>1,
+          "discussion_question_id"=>"731b457a-245c-4878-83da-8ca15b812714",
+          "created_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "updated_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "discussion_question_post_id"=>"587b457a-245a-4878-83da-8ca15b812714",
+          "user_type"=>"Student"
+        }
         let(:id) { DiscussionQuestionPost.all.first.id }
         let(:discussion_question_post) do
           { content: 'This edit is the most amazing edit ever' }
@@ -224,6 +335,24 @@ RSpec.describe 'discussion_question_posts', type: :request do
       }
 
       response(200, 'successful') do
+        example 'application/json', :discussion_question_post, {
+          "id"=>"48914fd6-5024-4525-a8b2-9e7d4d108d81",
+          "course_id"=>"0c8afa68-8cd3-4406-9d8f-6708cedf8f01",
+          "user_id"=>"4e803bd5-b0c5-4b95-8f13-4d393842e21b",
+          "content"=>
+          "Professor would it make sense just to you know, break the wand into a million pieces or something so voldy cannot get it?",
+          "posted_at"=>"Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00",
+          "archived_at"=>nil,
+          "deleted_at"=>nil,
+          "edited_at"=>nil,
+          "state"=>nil,
+          "like_count"=>1,
+          "discussion_question_id"=>"731b457a-245c-4878-83da-8ca15b812714",
+          "created_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "updated_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "discussion_question_post_id"=>"587b457a-245a-4878-83da-8ca15b812714",
+          "user_type"=>"Student"
+        }
         let(:id) { DiscussionQuestionPost.all.last.id }
         let(:discussion_question_post) do
           { content: 'This edit is the most amazing edit ever' }
@@ -245,6 +374,24 @@ RSpec.describe 'discussion_question_posts', type: :request do
 
     delete('delete discussion_question_post') do
       response(200, 'successful') do
+        example 'application/json', :discussion_question_post_deleted_at, {
+          "id"=>"48914fd6-5024-4525-a8b2-9e7d4d108d81",
+          "course_id"=>"0c8afa68-8cd3-4406-9d8f-6708cedf8f01",
+          "user_id"=>"4e803bd5-b0c5-4b95-8f13-4d393842e21b",
+          "content"=>
+          "Professor would it make sense just to you know, break the wand into a million pieces or something so voldy cannot get it?",
+          "posted_at"=>"Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00",
+          "archived_at"=>nil,
+          "deleted_at"=>"Sun, 21 Jul 2024 23:59:18.080696000 UTC +00:00",
+          "edited_at"=>nil,
+          "state"=>nil,
+          "like_count"=>1,
+          "discussion_question_id"=>"731b457a-245c-4878-83da-8ca15b812714",
+          "created_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "updated_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "discussion_question_post_id"=>"587b457a-245a-4878-83da-8ca15b812714",
+          "user_type"=>"Student"
+        }
         let(:id) { DiscussionQuestionPost.all.last.id }
 
         after do |example|
@@ -298,6 +445,24 @@ RSpec.describe 'discussion_question_posts', type: :request do
 
     get('show discussion_question_post') do
       response(200, 'successful') do
+        example 'application/json', :discussion_question_post, {
+          "id"=>"48914fd6-5024-4525-a8b2-9e7d4d108d81",
+          "course_id"=>"0c8afa68-8cd3-4406-9d8f-6708cedf8f01",
+          "user_id"=>"4e803bd5-b0c5-4b95-8f13-4d393842e21b",
+          "content"=>
+          "Professor would it make sense just to you know, break the wand into a million pieces or something so voldy cannot get it?",
+          "posted_at"=>"Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00",
+          "archived_at"=>nil,
+          "deleted_at"=>nil,
+          "edited_at"=>nil,
+          "state"=>nil,
+          "like_count"=>1,
+          "discussion_question_id"=>"731b457a-245c-4878-83da-8ca15b812714",
+          "created_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "updated_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "discussion_question_post_id"=>"587b457a-245a-4878-83da-8ca15b812714",
+          "user_type"=>"Student"
+        }
         let(:course_id) { Course.all.first.id }
         let(:discussion_question_id) do
           DiscussionQuestion.where(course_id: course_id).first.id

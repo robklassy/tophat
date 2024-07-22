@@ -8,6 +8,27 @@ RSpec.describe 'schools', type: :request do
 
     get('list schools') do
       response(200, 'successful') do
+        example 'application/json', :schools, [
+          {"id"=>"d5169068-6adf-4163-a3ed-9adec9502a12",
+            "name"=>"Charles Xavier's School For Gifted Youngsters",
+            "created_at"=>"2024-07-21T19:58:06.919Z",
+            "updated_at"=>"2024-07-21T19:58:06.919Z"},
+          {
+            "id"=>"e598af11-634c-4cc0-85ad-7aee9bc4ef4d",
+            "name"=>"University of the Mountains",
+            "created_at"=>"2024-07-21T23:56:17.821Z",
+            "updated_at"=>"2024-07-21T23:56:17.821Z"},
+          {
+            "id"=>"8ebcdc02-d0d1-4b6c-a1ff-546df0969ec3",
+            "name"=>"University of Colorado Boulder",
+            "created_at"=>"2024-07-21T23:56:18.013Z",
+            "updated_at"=>"2024-07-21T23:56:18.013Z"},
+          {
+            "id"=>"2b9087be-b623-4634-bf8c-e1fb0175c0dd",
+            "name"=>"Hogwarts",
+            "created_at"=>"2024-07-21T23:56:18.047Z",
+            "updated_at"=>"2024-07-21T23:56:18.047Z"}
+        ]
 
         after do |example|
           example.metadata[:response][:content] = {
@@ -32,6 +53,13 @@ RSpec.describe 'schools', type: :request do
 
     get('show school') do
       response(200, 'successful') do
+        example 'application/json', :school, {
+          "id"=>"e598af11-634c-4cc0-85ad-7aee9bc4ef4d",
+          "name"=>"University of the Mountains",
+          "created_at"=>"2024-07-21T23:56:17.821Z",
+          "updated_at"=>"2024-07-21T23:56:17.821Z"
+        }
+
         let(:id) { School.all.first.id }
 
         after do |example|
