@@ -49,7 +49,7 @@ The databases need to be migrated, this is accomplished by using rails migration
 ## Seed Data
 Run the seeding script to populate the dev environment with some data
 - go into repo directory
-- rake db:seed
+- `rake db:seed`
 
 ## Rails Console
 See if the project is mostly functional by going into the console
@@ -66,4 +66,5 @@ Can run tests to ensure project is functional
 Run the web server to load API docs
 - go into repo directory
 - `rails s`
-- navigate to the site on your browser and go to `http://localhost/api-docs`
+- navigate to the site on your browser and go to `http://localhost:3000/api-docs`
+- note that your port after `localhost` might be different, use the port that `rails s` is listening on
