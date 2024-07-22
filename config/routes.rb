@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :students, only: [:index, :show]
   resources :professors, only: [:index, :show]
 
-  resources :discussion_questions
-  resources :discussion_question_posts do
+  resources :discussion_questions, only: [:index, :show, :create, :update, :destroy]
+  resources :discussion_question_posts, only: [:index, :show, :create, :update, :destroy] do
     member do
       put 'like'
       put 'dislike'
