@@ -28,7 +28,7 @@ RSpec.describe 'discussion_questions', type: :request do
         end
       end
     end
-    data = JSON.parse(response.body)
+
     post('create discussion_question') do
       consumes 'application/json'
       produces 'application/json'
