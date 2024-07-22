@@ -17,24 +17,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_230948) do
 
   create_table "course_professors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "course_id", null: false
+    t.string "user_type", null: false
     t.uuid "user_id", null: false
     t.datetime "started_at"
     t.datetime "ended_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_course_professors_on_course_id"
-    t.index ["user_id"], name: "index_course_professors_on_user_id"
+    t.index ["user_type", "user_id"], name: "index_course_professors_on_user"
   end
 
   create_table "course_students", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "course_id", null: false
+    t.string "user_type", null: false
     t.uuid "user_id", null: false
     t.datetime "started_at"
     t.datetime "ended_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_course_students_on_course_id"
-    t.index ["user_id"], name: "index_course_students_on_user_id"
+    t.index ["user_type", "user_id"], name: "index_course_students_on_user"
   end
 
   create_table "courses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -138,22 +140,24 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_230948) do
 
   create_table "school_professors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.boolean "active", default: true
+    t.string "user_type", null: false
     t.uuid "user_id", null: false
     t.uuid "school_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["school_id"], name: "index_school_professors_on_school_id"
-    t.index ["user_id"], name: "index_school_professors_on_user_id"
+    t.index ["user_type", "user_id"], name: "index_school_professors_on_user"
   end
 
   create_table "school_students", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.boolean "active"
+    t.string "user_type", null: false
     t.uuid "user_id", null: false
     t.uuid "school_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["school_id"], name: "index_school_students_on_school_id"
-    t.index ["user_id"], name: "index_school_students_on_user_id"
+    t.index ["user_type", "user_id"], name: "index_school_students_on_user"
   end
 
   create_table "schools", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -172,7 +176,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_230948) do
 
   add_foreign_key "course_professors", "courses"
   add_foreign_key "course_students", "courses"
-  add_foreign_key "course_students", "users"
   add_foreign_key "courses", "faculties"
   add_foreign_key "courses", "schools"
   add_foreign_key "discussion_question_post_ratings", "discussion_question_posts"
@@ -189,7 +192,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_230948) do
   add_foreign_key "faculty_professors", "faculties"
   add_foreign_key "faculty_students", "faculties"
   add_foreign_key "school_professors", "schools"
-  add_foreign_key "school_professors", "users"
   add_foreign_key "school_students", "schools"
-  add_foreign_key "school_students", "users"
 end
