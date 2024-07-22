@@ -47,6 +47,8 @@ RSpec.describe 'students', type: :request do
         end
         run_test! do |response|
           data = JSON.parse(response.body)
+          expect(id).not_to eq(nil)
+          expect(data['id']).not_to eq(nil)
           expect(data['id']).to eq(id)
         end
       end
