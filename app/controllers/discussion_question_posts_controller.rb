@@ -13,7 +13,12 @@ class DiscussionQuestionPostsController < ApplicationController
     end
 
     flat_dqps = qry.all
-    @dqps = DiscussionQuestionPost.discussion_question_posts_tree(flat_dqps)
+
+    @dqps = if params['hierarchy'] == 'tree'
+      DiscussionQuestionPost.discussion_question_posts_tree(flat_dqps)
+    else
+      flat_dqps
+    end
 
     render json: @dqps, status: :ok
   end
@@ -30,7 +35,7 @@ class DiscussionQuestionPostsController < ApplicationController
     end
 
     @dqp = qry.where(id: params['id']).first
-    
+
     render json: @dqp, status: :ok
   end
 

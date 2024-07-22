@@ -62,7 +62,7 @@ Can run tests to ensure project is functional
 - go into repo directory
 - `rspec spec`
 
-## Rails Server
+## Rails Server / API Docs
 Run the web server to load API docs
 - go into repo directory
 - `rails s`

@@ -117,21 +117,32 @@ namespace :db do
           posted_at: Time.zone.now,
           like_count: 1
         )
-
         dqp.save!
+
+        child_dqp = DiscussionQuestionPost.new(
+          discussion_question: dq,
+          discussion_question_post_id: dqp.id,
+          course: c,
+          user_id: st.id,
+          user_type: 'Student',
+          content: discussion_questions[i][:discussion_question_posts].first[:content] + "child post",
+          posted_at: Time.zone.now,
+          like_count: 1
+        )
+        child_dqp.save!
+
+        child_dqp2 = DiscussionQuestionPost.new(
+          discussion_question: dq,
+          discussion_question_post_id: child_dqp.id,
+          course: c,
+          user_id: st.id,
+          user_type: 'Student',
+          content: discussion_questions[i][:discussion_question_posts].first[:content] + "child post another onnneee",
+          posted_at: Time.zone.now,
+          like_count: 1
+        )
+        child_dqp2.save!
       end
     end
-
-
-
-
-
-
-
-
-
-
-
-
   end
 end

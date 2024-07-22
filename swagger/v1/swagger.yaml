@@ -160,12 +160,20 @@ paths:
                   type: string
                 user_type:
                   type: string
-  "/discussion_question_posts":
+  "/discussion_question_posts?hierarchy={hierarchy}":
+    parameters:
+    - name: hierarchy
+      in: path
+      description: hierarchy
+      required: true
+      schema:
+        type: string
     get:
       summary: list discussion_question_posts
       responses:
         '200':
           description: successful
+  "/discussion_question_posts":
     post:
       summary: create discussion_question_post
       parameters: []

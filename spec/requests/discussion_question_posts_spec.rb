@@ -125,11 +125,33 @@ RSpec.describe 'discussion_question_posts', type: :request do
     end
   end
 
-  path '/discussion_question_posts' do
+  path '/discussion_question_posts?hierarchy={hierarchy}' do
+    parameter name: 'hierarchy', in: :path, type: :string, description: 'hierarchy'
+    let(:hierarchy) { 'tree' }
 
     get('list discussion_question_posts') do
       response(200, 'successful') do
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test! do |response|
+          data = JSON.parse(response.body)
+          expect(data.class).to eq(Hash)
+        end
+      end
+    end
+  end
 
+  path '/discussion_question_posts?hierarchy={hierarchy}' do
+    parameter name: 'hierarchy', in: :path, type: :string, description: 'hierarchy'
+    let(:hierarchy) { 'flat' }
+
+    get('list discussion_question_posts') do
+      response(200, 'successful') do
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -146,7 +168,9 @@ RSpec.describe 'discussion_question_posts', type: :request do
         end
       end
     end
+  end
 
+  path '/discussion_question_posts' do
     post('create discussion_question_post') do
       consumes 'application/json'
       produces 'application/json'
