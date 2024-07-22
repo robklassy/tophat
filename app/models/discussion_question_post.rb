@@ -9,6 +9,8 @@ class DiscussionQuestionPost < ApplicationRecord
   validates :user_type, exclusion: { in: ['User'],
     message: "%{value} is not allowed" }
 
+    after_save :bust_cache
+
   def self.traverse_child_posts(posts)
     h = {}
 
@@ -25,5 +27,15 @@ class DiscussionQuestionPost < ApplicationRecord
     root_posts = posts.select { |p| p.discussion_question_post_id.blank? }
     h = traverse_child_posts(root_posts)
     h
+  end
+
+  def bust_cache
+    # need to bust the tree cache if a post for this course and discussion question is saved
+    key = "th-#{course_id}-#{discussion_question_id}"
+    DiscussionQuestionPost.redis_connection.del(key)
+  end
+
+  def self.redis_connection
+    redis ||= Redis.new
   end
 end

@@ -1,6 +1,16 @@
 class DiscussionQuestionPostsController < ApplicationController
   def index
-    # Redis cache here based on course_id and discussion_question_id
+    key = "th-#{params['course_id']}-#{params['discussion_question_id']}"
+
+    # see if this is cached if its the tree structure
+    if params['hierarchy'] == 'tree' && params['course_id'].present? && params['discussion_question_id'].present?
+      cached = DiscussionQuestionPost.redis_connection.get(key)
+      if cached.present?
+        @dqps = JSON.parse(cached)
+        render json: @dqps, status: :ok
+        return
+      end
+    end
 
     qry = DiscussionQuestionPost
 
@@ -15,7 +25,10 @@ class DiscussionQuestionPostsController < ApplicationController
     flat_dqps = qry.all
 
     @dqps = if params['hierarchy'] == 'tree'
-      DiscussionQuestionPost.discussion_question_posts_tree(flat_dqps)
+      res = DiscussionQuestionPost.discussion_question_posts_tree(flat_dqps)
+      # cache this tree result for speed
+      DiscussionQuestionPost.redis_connection.set(key, res.to_json, ex: 360)
+      res
     else
       flat_dqps
     end
@@ -133,4 +146,5 @@ class DiscussionQuestionPostsController < ApplicationController
 
     render json: @dqp, status: :ok
   end
+
 end
