@@ -1,0 +1,975 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/courses":
+    get:
+      summary: list courses
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                courses:
+                  value:
+                  - id: bcfbc77c-323b-45b2-9321-37bbdd45a434
+                    course_code: SOHN101
+                    name: Hard Knocks 101
+                    school_id: d5169068-6adf-4163-a3ed-9adec9502a12
+                    faculty_id: 5b886a1c-9cdb-43b3-b4eb-05af6a96c6e4
+                    created_at: '2024-07-21T20:11:21.155Z'
+                    updated_at: '2024-07-21T20:34:36.539Z'
+                  - id: 27ae8e85-f74c-48c2-bd10-13dd55291f6e
+                    course_code: AIR101
+                    name: Air Guitar Intro
+                    school_id: e598af11-634c-4cc0-85ad-7aee9bc4ef4d
+                    faculty_id: 150fff19-8bf4-4a53-b13b-bf389c479246
+                    created_at: '2024-07-21T23:56:17.907Z'
+                    updated_at: '2024-07-21T23:56:17.907Z'
+                  - id: 9c00b0ae-4710-4d5d-8c21-1f1bf8a2edad
+                    course_code: KFC101
+                    name: Chicken Basics
+                    school_id: 8ebcdc02-d0d1-4b6c-a1ff-546df0969ec3
+                    faculty_id: 4ccdd9d8-53fa-4a21-b76f-1a2256a631fb
+                    created_at: '2024-07-21T23:56:18.025Z'
+                    updated_at: '2024-07-21T23:56:18.025Z'
+                  - id: 0c8afa68-8cd3-4406-9d8f-6708cedf8f01
+                    course_code: SHH101
+                    name: He Who Shall Not Be Named Intro
+                    school_id: 2b9087be-b623-4634-bf8c-e1fb0175c0dd
+                    faculty_id: bae34083-2164-4978-94df-f25b0f2a1968
+                    created_at: '2024-07-21T23:56:18.059Z'
+                    updated_at: '2024-07-21T23:56:18.059Z'
+  "/courses/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show course
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                course:
+                  value:
+                    id: 0c8afa68-8cd3-4406-9d8f-6708cedf8f01
+                    course_code: SHH101
+                    name: He Who Shall Not Be Named Intro
+                    school_id: 2b9087be-b623-4634-bf8c-e1fb0175c0dd
+                    faculty_id: bae34083-2164-4978-94df-f25b0f2a1968
+                    created_at: '2024-07-21T23:56:18.059Z'
+                    updated_at: '2024-07-21T23:56:18.059Z'
+  "/discussion_question_posts/{id}/like":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    put:
+      summary: like discussion_question_post
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                discussion_question_post:
+                  value:
+                    id: 48914fd6-5024-4525-a8b2-9e7d4d108d81
+                    course_id: 0c8afa68-8cd3-4406-9d8f-6708cedf8f01
+                    user_id: 4e803bd5-b0c5-4b95-8f13-4d393842e21b
+                    content: Professor would it make sense just to you know, break
+                      the wand into a million pieces or something so voldy cannot
+                      get it?
+                    posted_at: Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00
+                    archived_at: 
+                    deleted_at: 
+                    edited_at: 
+                    state: 
+                    like_count: 1
+                    discussion_question_id: 731b457a-245c-4878-83da-8ca15b812714
+                    created_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    updated_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    discussion_question_post_id: 
+                    user_type: Student
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                user_type:
+                  type: string
+  "/discussion_question_posts/{id}/dislike":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    put:
+      summary: dislike discussion_question_post
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                discussion_question_post:
+                  value:
+                    id: 48914fd6-5024-4525-a8b2-9e7d4d108d81
+                    course_id: 0c8afa68-8cd3-4406-9d8f-6708cedf8f01
+                    user_id: 4e803bd5-b0c5-4b95-8f13-4d393842e21b
+                    content: Professor would it make sense just to you know, break
+                      the wand into a million pieces or something so voldy cannot
+                      get it?
+                    posted_at: Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00
+                    archived_at: 
+                    deleted_at: 
+                    edited_at: 
+                    state: 
+                    like_count: -1
+                    discussion_question_id: 731b457a-245c-4878-83da-8ca15b812714
+                    created_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    updated_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    discussion_question_post_id: 
+                    user_type: Student
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                user_type:
+                  type: string
+  "/discussion_question_posts":
+    get:
+      summary: list discussion_question_posts
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create discussion_question_post
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                discussion_question_post_no_parent:
+                  value:
+                    id: 48914fd6-5024-4525-a8b2-9e7d4d108d81
+                    course_id: 0c8afa68-8cd3-4406-9d8f-6708cedf8f01
+                    user_id: 4e803bd5-b0c5-4b95-8f13-4d393842e21b
+                    content: Professor would it make sense just to you know, break
+                      the wand into a million pieces or something so voldy cannot
+                      get it?
+                    posted_at: Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00
+                    archived_at: 
+                    deleted_at: 
+                    edited_at: 
+                    state: 
+                    like_count: 1
+                    discussion_question_id: 731b457a-245c-4878-83da-8ca15b812714
+                    created_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    updated_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    discussion_question_post_id: 
+                    user_type: Student
+                discussion_question_post_with_parent:
+                  value:
+                    id: 48914fd6-5024-4525-a8b2-9e7d4d108d81
+                    course_id: 0c8afa68-8cd3-4406-9d8f-6708cedf8f01
+                    user_id: 4e803bd5-b0c5-4b95-8f13-4d393842e21b
+                    content: Professor would it make sense just to you know, break
+                      the wand into a million pieces or something so voldy cannot
+                      get it?
+                    posted_at: Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00
+                    archived_at: 
+                    deleted_at: 
+                    edited_at: 
+                    state: 
+                    like_count: 1
+                    discussion_question_id: 731b457a-245c-4878-83da-8ca15b812714
+                    created_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    updated_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    discussion_question_post_id: 587b457a-245a-4878-83da-8ca15b812714
+                    user_type: Student
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                user_type:
+                  type: string
+                course_id:
+                  type: string
+                content:
+                  type: string
+                discussion_question_id:
+                  type: string
+                discussion_question_topic_id:
+                  type: string
+  "/discussion_question_posts/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show discussion_question_post
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                discussion_question_post:
+                  value:
+                    id: 48914fd6-5024-4525-a8b2-9e7d4d108d81
+                    course_id: 0c8afa68-8cd3-4406-9d8f-6708cedf8f01
+                    user_id: 4e803bd5-b0c5-4b95-8f13-4d393842e21b
+                    content: Professor would it make sense just to you know, break
+                      the wand into a million pieces or something so voldy cannot
+                      get it?
+                    posted_at: Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00
+                    archived_at: 
+                    deleted_at: 
+                    edited_at: 
+                    state: 
+                    like_count: 1
+                    discussion_question_id: 731b457a-245c-4878-83da-8ca15b812714
+                    created_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    updated_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    discussion_question_post_id: 587b457a-245a-4878-83da-8ca15b812714
+                    user_type: Student
+    patch:
+      summary: update discussion_question_post
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                discussion_question_post:
+                  value:
+                    id: 48914fd6-5024-4525-a8b2-9e7d4d108d81
+                    course_id: 0c8afa68-8cd3-4406-9d8f-6708cedf8f01
+                    user_id: 4e803bd5-b0c5-4b95-8f13-4d393842e21b
+                    content: Professor would it make sense just to you know, break
+                      the wand into a million pieces or something so voldy cannot
+                      get it?
+                    posted_at: Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00
+                    archived_at: 
+                    deleted_at: 
+                    edited_at: 
+                    state: 
+                    like_count: 1
+                    discussion_question_id: 731b457a-245c-4878-83da-8ca15b812714
+                    created_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    updated_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    discussion_question_post_id: 587b457a-245a-4878-83da-8ca15b812714
+                    user_type: Student
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+    put:
+      summary: update discussion_question_post
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                discussion_question_post:
+                  value:
+                    id: 48914fd6-5024-4525-a8b2-9e7d4d108d81
+                    course_id: 0c8afa68-8cd3-4406-9d8f-6708cedf8f01
+                    user_id: 4e803bd5-b0c5-4b95-8f13-4d393842e21b
+                    content: Professor would it make sense just to you know, break
+                      the wand into a million pieces or something so voldy cannot
+                      get it?
+                    posted_at: Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00
+                    archived_at: 
+                    deleted_at: 
+                    edited_at: 
+                    state: 
+                    like_count: 1
+                    discussion_question_id: 731b457a-245c-4878-83da-8ca15b812714
+                    created_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    updated_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    discussion_question_post_id: 587b457a-245a-4878-83da-8ca15b812714
+                    user_type: Student
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+    delete:
+      summary: delete discussion_question_post
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                discussion_question_post_deleted_at:
+                  value:
+                    id: 48914fd6-5024-4525-a8b2-9e7d4d108d81
+                    course_id: 0c8afa68-8cd3-4406-9d8f-6708cedf8f01
+                    user_id: 4e803bd5-b0c5-4b95-8f13-4d393842e21b
+                    content: Professor would it make sense just to you know, break
+                      the wand into a million pieces or something so voldy cannot
+                      get it?
+                    posted_at: Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00
+                    archived_at: 
+                    deleted_at: Sun, 21 Jul 2024 23:59:18.080696000 UTC +00:00
+                    edited_at: 
+                    state: 
+                    like_count: 1
+                    discussion_question_id: 731b457a-245c-4878-83da-8ca15b812714
+                    created_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    updated_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    discussion_question_post_id: 587b457a-245a-4878-83da-8ca15b812714
+                    user_type: Student
+  "/courses/{course_id}/discussion_questions/{discussion_question_id}/discussion_question_posts":
+    parameters:
+    - name: course_id
+      in: path
+      description: course_id
+      required: true
+      schema:
+        type: string
+    - name: discussion_question_id
+      in: path
+      description: discussion_question_id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: list discussion_question_posts
+      responses:
+        '200':
+          description: successful
+  "/courses/{course_id}/discussion_questions/{discussion_question_id}/discussion_question_posts/{id}":
+    parameters:
+    - name: course_id
+      in: path
+      description: course_id
+      required: true
+      schema:
+        type: string
+    - name: discussion_question_id
+      in: path
+      description: discussion_question_id
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show discussion_question_post
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                discussion_question_post:
+                  value:
+                    id: 48914fd6-5024-4525-a8b2-9e7d4d108d81
+                    course_id: 0c8afa68-8cd3-4406-9d8f-6708cedf8f01
+                    user_id: 4e803bd5-b0c5-4b95-8f13-4d393842e21b
+                    content: Professor would it make sense just to you know, break
+                      the wand into a million pieces or something so voldy cannot
+                      get it?
+                    posted_at: Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00
+                    archived_at: 
+                    deleted_at: 
+                    edited_at: 
+                    state: 
+                    like_count: 1
+                    discussion_question_id: 731b457a-245c-4878-83da-8ca15b812714
+                    created_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    updated_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    discussion_question_post_id: 587b457a-245a-4878-83da-8ca15b812714
+                    user_type: Student
+  "/discussion_questions":
+    get:
+      summary: list discussion_questions
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                discussion_questions:
+                  value:
+                  - id: 6feaeacc-0627-4b1e-bcc8-e829d6005a79
+                    course_id: 27ae8e85-f74c-48c2-bd10-13dd55291f6e
+                    user_id: 39e52233-51c8-4f9a-b237-5c886edf43c5
+                    title: How is the weather
+                    content: Hey everyone, since we are all over the world, let's
+                      talk about how the local weather
+                    posted_at: '2024-07-21T23:56:17.969Z'
+                    archived_at: 
+                    deleted_at: 
+                    edited_at: 
+                    state: posted
+                    created_at: '2024-07-21T23:56:17.989Z'
+                    updated_at: '2024-07-21T23:56:17.989Z'
+                    user_type: Professor
+                  - id: 99c99c2c-f063-4de7-9218-4adc3eaa0ef0
+                    course_id: 9c00b0ae-4710-4d5d-8c21-1f1bf8a2edad
+                    user_id: b8b7fb53-6c42-400d-be71-ac7450114cd9
+                    title: Chicken/sauce ratio questions here
+                    content: This is the discussion to help each other with the chicken/sauce
+                      ratio calculations questions
+                    posted_at: '2024-07-21T23:56:18.038Z'
+                    archived_at: 
+                    deleted_at: 
+                    edited_at: 
+                    state: posted
+                    created_at: '2024-07-21T23:56:18.040Z'
+                    updated_at: '2024-07-21T23:56:18.040Z'
+                    user_type: Professor
+                  - id: 731b457a-245c-4878-83da-8ca15b812714
+                    course_id: 0c8afa68-8cd3-4406-9d8f-6708cedf8f01
+                    user_id: 2cb09736-556c-42c3-b69c-8b5312ae9218
+                    title: elder wand questions
+                    content: Hello Harry, this is for ALL of your questions about
+                      the elder wand, anyone else posting here will have points deducted
+                      from their house!
+                    posted_at: '2024-07-21T23:56:18.074Z'
+                    archived_at: 
+                    deleted_at: 
+                    edited_at: 
+                    state: posted
+                    created_at: '2024-07-21T23:56:18.076Z'
+                    updated_at: '2024-07-21T23:56:18.076Z'
+                    user_type: Professor
+    post:
+      summary: create discussion_question
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                discussion_question:
+                  value:
+                    id: 731b457a-245c-4878-83da-8ca15b812714
+                    course_id: 0c8afa68-8cd3-4406-9d8f-6708cedf8f01
+                    user_id: 2cb09736-556c-42c3-b69c-8b5312ae9218
+                    title: elder wand questions
+                    content: Hello Harry, this is for ALL of your questions about
+                      the elder wand, anyone else posting here will have points deducted
+                      from their house!
+                    posted_at: '2024-07-21T23:56:18.074Z'
+                    archived_at: 
+                    deleted_at: 
+                    edited_at: 
+                    state: posted
+                    created_at: '2024-07-21T23:56:18.076Z'
+                    updated_at: '2024-07-21T23:56:18.076Z'
+                    user_type: Professor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                course_id:
+                  type: string
+                user_id:
+                  type: string
+                user_type:
+                  type: string
+                title:
+                  type: string
+                content:
+                  type: string
+  "/discussion_questions/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show discussion_question
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                discussion_question:
+                  value:
+                    id: 731b457a-245c-4878-83da-8ca15b812714
+                    course_id: 0c8afa68-8cd3-4406-9d8f-6708cedf8f01
+                    user_id: 2cb09736-556c-42c3-b69c-8b5312ae9218
+                    title: elder wand questions
+                    content: Hello Harry, this is for ALL of your questions about
+                      the elder wand, anyone else posting here will have points deducted
+                      from their house!
+                    posted_at: '2024-07-21T23:56:18.074Z'
+                    archived_at: 
+                    deleted_at: 
+                    edited_at: 
+                    state: posted
+                    created_at: '2024-07-21T23:56:18.076Z'
+                    updated_at: '2024-07-21T23:56:18.076Z'
+                    user_type: Professor
+    patch:
+      summary: update discussion_question
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                discussion_question:
+                  value:
+                    id: 731b457a-245c-4878-83da-8ca15b812714
+                    course_id: 0c8afa68-8cd3-4406-9d8f-6708cedf8f01
+                    user_id: 2cb09736-556c-42c3-b69c-8b5312ae9218
+                    title: elder wand questions
+                    content: Hello Harry, this is for ALL of your questions about
+                      the elder wand, anyone else posting here will have points deducted
+                      from their house!
+                    posted_at: '2024-07-21T23:56:18.074Z'
+                    archived_at: 
+                    deleted_at: 
+                    edited_at: 
+                    state: posted
+                    created_at: '2024-07-21T23:56:18.076Z'
+                    updated_at: '2024-07-21T23:56:18.076Z'
+                    user_type: Professor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+    put:
+      summary: update discussion_question
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                discussion_question:
+                  value:
+                    id: 731b457a-245c-4878-83da-8ca15b812714
+                    course_id: 0c8afa68-8cd3-4406-9d8f-6708cedf8f01
+                    user_id: 2cb09736-556c-42c3-b69c-8b5312ae9218
+                    title: elder wand questions
+                    content: Hello Harry, this is for ALL of your questions about
+                      the elder wand, anyone else posting here will have points deducted
+                      from their house!
+                    posted_at: '2024-07-21T23:56:18.074Z'
+                    archived_at: 
+                    deleted_at: 
+                    edited_at: 
+                    state: posted
+                    created_at: '2024-07-21T23:56:18.076Z'
+                    updated_at: '2024-07-21T23:56:18.076Z'
+                    user_type: Professor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+    delete:
+      summary: delete discussion_question
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                discussion_question:
+                  value:
+                    id: 731b457a-245c-4878-83da-8ca15b812714
+                    course_id: 0c8afa68-8cd3-4406-9d8f-6708cedf8f01
+                    user_id: 2cb09736-556c-42c3-b69c-8b5312ae9218
+                    title: elder wand questions
+                    content: Hello Harry, this is for ALL of your questions about
+                      the elder wand, anyone else posting here will have points deducted
+                      from their house!
+                    posted_at: '2024-07-21T23:56:18.074Z'
+                    archived_at: 
+                    deleted_at: '2024-07-21T23:59:18.076Z'
+                    edited_at: 
+                    state: posted
+                    created_at: '2024-07-21T23:56:18.076Z'
+                    updated_at: '2024-07-21T23:56:18.076Z'
+                    user_type: Professor
+  "/courses/{course_id}/discussion_questions":
+    parameters:
+    - name: course_id
+      in: path
+      description: course_id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: list discussion_questions
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                discussion_questions:
+                  value:
+                  - id: 6feaeacc-0627-4b1e-bcc8-e829d6005a79
+                    course_id: 27ae8e85-f74c-48c2-bd10-13dd55291f6e
+                    user_id: 39e52233-51c8-4f9a-b237-5c886edf43c5
+                    title: How is the weather
+                    content: Hey everyone, since we are all over the world, let's
+                      talk about how the local weather
+                    posted_at: '2024-07-21T23:56:17.969Z'
+                    archived_at: 
+                    deleted_at: 
+                    edited_at: 
+                    state: posted
+                    created_at: '2024-07-21T23:56:17.989Z'
+                    updated_at: '2024-07-21T23:56:17.989Z'
+                    user_type: Professor
+                  - id: 99c99c2c-f063-4de7-9218-4adc3eaa0ef0
+                    course_id: 27ae8e85-f74c-48c2-bd10-13dd55291f6e
+                    user_id: b8b7fb53-6c42-400d-be71-ac7450114cd9
+                    title: Chicken/sauce ratio questions here
+                    content: This is the discussion to help each other with the chicken/sauce
+                      ratio calculations questions
+                    posted_at: '2024-07-21T23:56:18.038Z'
+                    archived_at: 
+                    deleted_at: 
+                    edited_at: 
+                    state: posted
+                    created_at: '2024-07-21T23:56:18.040Z'
+                    updated_at: '2024-07-21T23:56:18.040Z'
+                    user_type: Professor
+                  - id: 731b457a-245c-4878-83da-8ca15b812714
+                    course_id: 27ae8e85-f74c-48c2-bd10-13dd55291f6e
+                    user_id: 2cb09736-556c-42c3-b69c-8b5312ae9218
+                    title: elder wand questions
+                    content: Hello Harry, this is for ALL of your questions about
+                      the elder wand, anyone else posting here will have points deducted
+                      from their house!
+                    posted_at: '2024-07-21T23:56:18.074Z'
+                    archived_at: 
+                    deleted_at: 
+                    edited_at: 
+                    state: posted
+                    created_at: '2024-07-21T23:56:18.076Z'
+                    updated_at: '2024-07-21T23:56:18.076Z'
+                    user_type: Professor
+  "/courses/{course_id}/discussion_questions/{id}":
+    parameters:
+    - name: course_id
+      in: path
+      description: course_id
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show discussion_question
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                discussion_question:
+                  value:
+                    id: 731b457a-245c-4878-83da-8ca15b812714
+                    course_id: 0c8afa68-8cd3-4406-9d8f-6708cedf8f01
+                    user_id: 2cb09736-556c-42c3-b69c-8b5312ae9218
+                    title: elder wand questions
+                    content: Hello Harry, this is for ALL of your questions about
+                      the elder wand, anyone else posting here will have points deducted
+                      from their house!
+                    posted_at: '2024-07-21T23:56:18.074Z'
+                    archived_at: 
+                    deleted_at: '2024-07-21T23:59:18.076Z'
+                    edited_at: 
+                    state: posted
+                    created_at: '2024-07-21T23:56:18.076Z'
+                    updated_at: '2024-07-21T23:56:18.076Z'
+                    user_type: Professor
+  "/faculties":
+    get:
+      summary: list faculties
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                faculties:
+                  value:
+                  - id: 5b886a1c-9cdb-43b3-b4eb-05af6a96c6e4
+                    name: School Of Hard Knocks
+                    school_id: d5169068-6adf-4163-a3ed-9adec9502a12
+                    created_at: '2024-07-21T20:02:29.007Z'
+                    updated_at: '2024-07-21T20:02:29.007Z'
+                  - id: 150fff19-8bf4-4a53-b13b-bf389c479246
+                    name: School Of Air Guitar
+                    school_id: e598af11-634c-4cc0-85ad-7aee9bc4ef4d
+                    created_at: '2024-07-21T23:56:17.831Z'
+                    updated_at: '2024-07-21T23:56:17.831Z'
+                  - id: 4ccdd9d8-53fa-4a21-b76f-1a2256a631fb
+                    name: Faculty Of KFC
+                    school_id: 8ebcdc02-d0d1-4b6c-a1ff-546df0969ec3
+                    created_at: '2024-07-21T23:56:18.015Z'
+                    updated_at: '2024-07-21T23:56:18.015Z'
+                  - id: bae34083-2164-4978-94df-f25b0f2a1968
+                    name: School of Voldemort
+                    school_id: 2b9087be-b623-4634-bf8c-e1fb0175c0dd
+                    created_at: '2024-07-21T23:56:18.049Z'
+                    updated_at: '2024-07-21T23:56:18.049Z'
+  "/faculties/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show faculty
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                faculty:
+                  value:
+                    id: 4ccdd9d8-53fa-4a21-b76f-1a2256a631fb
+                    name: Faculty Of KFC
+                    school_id: 8ebcdc02-d0d1-4b6c-a1ff-546df0969ec3
+                    created_at: '2024-07-21T23:56:18.015Z'
+                    updated_at: '2024-07-21T23:56:18.015Z'
+  "/professors":
+    get:
+      summary: list professors
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                professors:
+                  value:
+                  - id: aab11918-6cd6-4b34-9803-d71007624a6c
+                    first_name: Charles
+                    last_name: Xavier
+                    created_at: '2024-07-21T20:15:12.359Z'
+                    updated_at: '2024-07-21T20:15:12.359Z'
+                  - id: 39e52233-51c8-4f9a-b237-5c886edf43c5
+                    first_name: Randy
+                    last_name: Marsh
+                    created_at: '2024-07-21T23:56:17.845Z'
+                    updated_at: '2024-07-21T23:56:17.845Z'
+                  - id: b8b7fb53-6c42-400d-be71-ac7450114cd9
+                    first_name: Herbert
+                    last_name: Garrison
+                    created_at: '2024-07-21T23:56:18.017Z'
+                    updated_at: '2024-07-21T23:56:18.017Z'
+                  - id: 2cb09736-556c-42c3-b69c-8b5312ae9218
+                    first_name: Albus
+                    last_name: Dumbledore
+                    created_at: '2024-07-21T23:56:18.050Z'
+                    updated_at: '2024-07-21T23:56:18.050Z'
+  "/professors/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show professor
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                professor:
+                  value:
+                    id: 39e52233-51c8-4f9a-b237-5c886edf43c5
+                    first_name: Randy
+                    last_name: Marsh
+                    created_at: '2024-07-21T23:56:17.845Z'
+                    updated_at: '2024-07-21T23:56:17.845Z'
+  "/schools":
+    get:
+      summary: list schools
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                schools:
+                  value:
+                  - id: d5169068-6adf-4163-a3ed-9adec9502a12
+                    name: Charles Xavier's School For Gifted Youngsters
+                    created_at: '2024-07-21T19:58:06.919Z'
+                    updated_at: '2024-07-21T19:58:06.919Z'
+                  - id: e598af11-634c-4cc0-85ad-7aee9bc4ef4d
+                    name: University of the Mountains
+                    created_at: '2024-07-21T23:56:17.821Z'
+                    updated_at: '2024-07-21T23:56:17.821Z'
+                  - id: 8ebcdc02-d0d1-4b6c-a1ff-546df0969ec3
+                    name: University of Colorado Boulder
+                    created_at: '2024-07-21T23:56:18.013Z'
+                    updated_at: '2024-07-21T23:56:18.013Z'
+                  - id: 2b9087be-b623-4634-bf8c-e1fb0175c0dd
+                    name: Hogwarts
+                    created_at: '2024-07-21T23:56:18.047Z'
+                    updated_at: '2024-07-21T23:56:18.047Z'
+  "/schools/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show school
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                school:
+                  value:
+                    id: e598af11-634c-4cc0-85ad-7aee9bc4ef4d
+                    name: University of the Mountains
+                    created_at: '2024-07-21T23:56:17.821Z'
+                    updated_at: '2024-07-21T23:56:17.821Z'
+  "/students":
+    get:
+      summary: list students
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                students:
+                  value:
+                  - id: c0a27d5b-37b6-45a7-9086-5ea0013ef6be
+                    first_name: Bob
+                    last_name: Derp
+                    created_at: '2024-07-21T19:53:50.010Z'
+                    updated_at: '2024-07-21T19:53:50.010Z'
+                  - id: d37e3674-c611-4388-862b-cd9f019d92d9
+                    first_name: Stan
+                    last_name: Marsh
+                    created_at: '2024-07-21T23:56:17.928Z'
+                    updated_at: '2024-07-21T23:56:17.928Z'
+                  - id: 2a7ee8ed-a626-4e21-b4d6-f18518b6477b
+                    first_name: Eric
+                    last_name: Cartman
+                    created_at: '2024-07-21T23:56:18.029Z'
+                    updated_at: '2024-07-21T23:56:18.029Z'
+                  - id: 4e803bd5-b0c5-4b95-8f13-4d393842e21b
+                    first_name: Harry
+                    last_name: Potter
+                    created_at: '2024-07-21T23:56:18.063Z'
+                    updated_at: '2024-07-21T23:56:18.063Z'
+  "/students/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show student
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                student:
+                  value:
+                    id: 2a7ee8ed-a626-4e21-b4d6-f18518b6477b
+                    first_name: Eric
+                    last_name: Cartman
+                    created_at: '2024-07-21T23:56:18.029Z'
+                    updated_at: '2024-07-21T23:56:18.029Z'
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
