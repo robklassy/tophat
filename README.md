@@ -28,7 +28,7 @@ Install Postgres for your platform if not already installed
 
 ## Redis
 Install Redis server for your platform if not already installed
-- if you have already have Redis setup with a login/pass, you will have to modify `DiscussionQuestionPost.redis_connection`
+- if you have already setup Redis with a login/pass, you will have to modify `DiscussionQuestionPost.redis_connection` and supply the correct credentials
 
 ## Bundler
 Bundler lets you install all of the rubygems as listed in `Gemfile`
