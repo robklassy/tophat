@@ -68,3 +68,10 @@ Run the web server to load API docs
 - `rails s`
 - navigate to the site on your browser and go to `http://localhost:3000/api-docs`
 - note that your port after `localhost` might be different, use the port that `rails s` is listening on
+- note that the "Try It Out" button likely will not work
+- you should be able to make simple `GET` calls in your browser at this point as well
+
+## Flat vs Tree Posts
+Listing the `DiscussionQuestionPosts` can be in a Flat or Tree structure using the `hierarchy` url parameter
+- `http://localhost:3000/discussion_question_posts` for flat
+- `http://localhost:3000/discussion_question_posts?hierarchy=tree` for tree
