@@ -4,7 +4,7 @@ Tophat Reddit-esque take home assignment from Rob Kalsi
 # Install
 Follow steps to get the project up and running on your local
 
-## GCC/G++ 
+## GCC/G++
 Install `gcc` and `g++` C/C++ compiler for your platform if not already installed
 
 ## Clone Repo
@@ -24,6 +24,7 @@ Use RVM to install ruby
 Install Postgres for your platform if not already installed
 - make the following databases: `tophat_dev`, `tophat_test`, `tophat_prod`
 - make the following user/pass: `test/blah` and `GRANT ALL PRIVILEGES` to the three databases created above
+- make the user created in the above step a `SUPERUSER`
 
 ## Redis
 Install Redis server for your platform if not already installed
@@ -45,6 +46,24 @@ The databases need to be migrated, this is accomplished by using rails migration
 - `rake db:migrate`
 - `RAILS_ENV=test rake db:migrate`
 
-## Seed
+## Seed Data
 Run the seeding script to populate the dev environment with some data
-- PENDING
+- go into repo directory
+- rake db:seed
+
+## Rails Console
+See if the project is mostly functional by going into the console
+- go into repo directory
+- `rails c`
+- type `exit` to leave
+
+## Tests
+Can run tests to ensure project is functional
+- go into repo directory
+- `rspec spec`
+
+## Rails Server
+Run the web server to load API docs
+- go into repo directory
+- `rails s`
+- navigate to the site on your browser and go to `http://localhost/api-docs`
