@@ -8,4 +8,9 @@ class DiscussionQuestionPost < ApplicationRecord
 
   validates :user_type, exclusion: { in: ['User'],
     message: "%{value} is not allowed" }
+
+  def self.discussion_question_posts_tree(posts)
+    # generate the tree here
+    posts
+  end
 end

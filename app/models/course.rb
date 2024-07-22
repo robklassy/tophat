@@ -1,6 +1,7 @@
 class Course < ApplicationRecord
   belongs_to :school
   belongs_to :faculty
+  has_many :discussion_questions
 
   validates :name, presence: true
   validates :course_code, presence: true
@@ -15,5 +16,5 @@ class Course < ApplicationRecord
     if s.id != f.school_id
       errors.add(:faculty, "Faculty does not belong to School")
     end
-  end  
+  end
 end
