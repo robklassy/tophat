@@ -64,6 +64,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_230948) do
   create_table "discussion_question_posts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "course_id", null: false
     t.uuid "user_id", null: false
+    t.string "user_type", null: false
     t.text "content"
     t.datetime "posted_at"
     t.datetime "archived_at"
@@ -75,7 +76,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_230948) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "discussion_question_post_id"
-    t.string "user_type", null: false
     t.index ["course_id"], name: "index_discussion_question_posts_on_course_id"
     t.index ["discussion_question_id"], name: "index_discussion_question_posts_on_discussion_question_id"
     t.index ["discussion_question_post_id"], name: "index_discussion_question_posts_on_discussion_question_post_id"
@@ -96,6 +96,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_230948) do
   create_table "discussion_questions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "course_id", null: false
     t.uuid "user_id", null: false
+    t.string "user_type", null: false
     t.string "title"
     t.text "content"
     t.datetime "posted_at"
@@ -105,7 +106,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_230948) do
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "user_type", null: false
     t.index ["course_id"], name: "index_discussion_questions_on_course_id"
     t.index ["user_id"], name: "index_discussion_questions_on_user_id"
   end
