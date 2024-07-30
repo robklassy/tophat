@@ -94,15 +94,61 @@ paths:
                       the wand into a million pieces or something so voldy cannot
                       get it?
                     posted_at: Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00
-                    archived_at: 
-                    deleted_at: 
-                    edited_at: 
-                    state: 
+                    archived_at:
+                    deleted_at:
+                    edited_at:
+                    state:
                     like_count: 1
                     discussion_question_id: 731b457a-245c-4878-83da-8ca15b812714
                     created_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
                     updated_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
-                    discussion_question_post_id: 
+                    discussion_question_post_id:
+                    user_type: Student
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                user_type:
+                  type: string
+  "/discussion_question_posts/{id}/cancel_rating":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    put:
+      summary: cancel rating on discussion_question_post
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                discussion_question_post:
+                  value:
+                    id: 48914fd6-5024-4525-a8b2-9e7d4d108d81
+                    course_id: 0c8afa68-8cd3-4406-9d8f-6708cedf8f01
+                    user_id: 4e803bd5-b0c5-4b95-8f13-4d393842e21b
+                    content: Professor would it make sense just to you know, break
+                      the wand into a million pieces or something so voldy cannot
+                      get it?
+                    posted_at: Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00
+                    archived_at:
+                    deleted_at:
+                    edited_at:
+                    state:
+                    like_count: 5
+                    discussion_question_id: 731b457a-245c-4878-83da-8ca15b812714
+                    created_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    updated_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
+                    discussion_question_post_id:
                     user_type: Student
       requestBody:
         content:
@@ -140,15 +186,15 @@ paths:
                       the wand into a million pieces or something so voldy cannot
                       get it?
                     posted_at: Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00
-                    archived_at: 
-                    deleted_at: 
-                    edited_at: 
-                    state: 
+                    archived_at:
+                    deleted_at:
+                    edited_at:
+                    state:
                     like_count: -1
                     discussion_question_id: 731b457a-245c-4878-83da-8ca15b812714
                     created_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
                     updated_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
-                    discussion_question_post_id: 
+                    discussion_question_post_id:
                     user_type: Student
       requestBody:
         content:
@@ -192,15 +238,15 @@ paths:
                       the wand into a million pieces or something so voldy cannot
                       get it?
                     posted_at: Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00
-                    archived_at: 
-                    deleted_at: 
-                    edited_at: 
-                    state: 
+                    archived_at:
+                    deleted_at:
+                    edited_at:
+                    state:
                     like_count: 1
                     discussion_question_id: 731b457a-245c-4878-83da-8ca15b812714
                     created_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
                     updated_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
-                    discussion_question_post_id: 
+                    discussion_question_post_id:
                     user_type: Student
                 discussion_question_post_with_parent:
                   value:
@@ -211,10 +257,10 @@ paths:
                       the wand into a million pieces or something so voldy cannot
                       get it?
                     posted_at: Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00
-                    archived_at: 
-                    deleted_at: 
-                    edited_at: 
-                    state: 
+                    archived_at:
+                    deleted_at:
+                    edited_at:
+                    state:
                     like_count: 1
                     discussion_question_id: 731b457a-245c-4878-83da-8ca15b812714
                     created_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
@@ -264,10 +310,10 @@ paths:
                       the wand into a million pieces or something so voldy cannot
                       get it?
                     posted_at: Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00
-                    archived_at: 
-                    deleted_at: 
-                    edited_at: 
-                    state: 
+                    archived_at:
+                    deleted_at:
+                    edited_at:
+                    state:
                     like_count: 1
                     discussion_question_id: 731b457a-245c-4878-83da-8ca15b812714
                     created_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
@@ -292,10 +338,10 @@ paths:
                       the wand into a million pieces or something so voldy cannot
                       get it?
                     posted_at: Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00
-                    archived_at: 
-                    deleted_at: 
-                    edited_at: 
-                    state: 
+                    archived_at:
+                    deleted_at:
+                    edited_at:
+                    state:
                     like_count: 1
                     discussion_question_id: 731b457a-245c-4878-83da-8ca15b812714
                     created_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
@@ -328,10 +374,10 @@ paths:
                       the wand into a million pieces or something so voldy cannot
                       get it?
                     posted_at: Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00
-                    archived_at: 
-                    deleted_at: 
-                    edited_at: 
-                    state: 
+                    archived_at:
+                    deleted_at:
+                    edited_at:
+                    state:
                     like_count: 1
                     discussion_question_id: 731b457a-245c-4878-83da-8ca15b812714
                     created_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
@@ -363,10 +409,10 @@ paths:
                       the wand into a million pieces or something so voldy cannot
                       get it?
                     posted_at: Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00
-                    archived_at: 
+                    archived_at:
                     deleted_at: Sun, 21 Jul 2024 23:59:18.080696000 UTC +00:00
-                    edited_at: 
-                    state: 
+                    edited_at:
+                    state:
                     like_count: 1
                     discussion_question_id: 731b457a-245c-4878-83da-8ca15b812714
                     created_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
@@ -429,10 +475,10 @@ paths:
                       the wand into a million pieces or something so voldy cannot
                       get it?
                     posted_at: Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00
-                    archived_at: 
-                    deleted_at: 
-                    edited_at: 
-                    state: 
+                    archived_at:
+                    deleted_at:
+                    edited_at:
+                    state:
                     like_count: 1
                     discussion_question_id: 731b457a-245c-4878-83da-8ca15b812714
                     created_at: Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00
@@ -457,9 +503,9 @@ paths:
                     content: Hey everyone, since we are all over the world, let's
                       talk about how the local weather
                     posted_at: '2024-07-21T23:56:17.969Z'
-                    archived_at: 
-                    deleted_at: 
-                    edited_at: 
+                    archived_at:
+                    deleted_at:
+                    edited_at:
                     state: posted
                     created_at: '2024-07-21T23:56:17.989Z'
                     updated_at: '2024-07-21T23:56:17.989Z'
@@ -471,9 +517,9 @@ paths:
                     content: This is the discussion to help each other with the chicken/sauce
                       ratio calculations questions
                     posted_at: '2024-07-21T23:56:18.038Z'
-                    archived_at: 
-                    deleted_at: 
-                    edited_at: 
+                    archived_at:
+                    deleted_at:
+                    edited_at:
                     state: posted
                     created_at: '2024-07-21T23:56:18.040Z'
                     updated_at: '2024-07-21T23:56:18.040Z'
@@ -486,9 +532,9 @@ paths:
                       the elder wand, anyone else posting here will have points deducted
                       from their house!
                     posted_at: '2024-07-21T23:56:18.074Z'
-                    archived_at: 
-                    deleted_at: 
-                    edited_at: 
+                    archived_at:
+                    deleted_at:
+                    edited_at:
                     state: posted
                     created_at: '2024-07-21T23:56:18.076Z'
                     updated_at: '2024-07-21T23:56:18.076Z'
@@ -512,9 +558,9 @@ paths:
                       the elder wand, anyone else posting here will have points deducted
                       from their house!
                     posted_at: '2024-07-21T23:56:18.074Z'
-                    archived_at: 
-                    deleted_at: 
-                    edited_at: 
+                    archived_at:
+                    deleted_at:
+                    edited_at:
                     state: posted
                     created_at: '2024-07-21T23:56:18.076Z'
                     updated_at: '2024-07-21T23:56:18.076Z'
@@ -561,9 +607,9 @@ paths:
                       the elder wand, anyone else posting here will have points deducted
                       from their house!
                     posted_at: '2024-07-21T23:56:18.074Z'
-                    archived_at: 
-                    deleted_at: 
-                    edited_at: 
+                    archived_at:
+                    deleted_at:
+                    edited_at:
                     state: posted
                     created_at: '2024-07-21T23:56:18.076Z'
                     updated_at: '2024-07-21T23:56:18.076Z'
@@ -587,9 +633,9 @@ paths:
                       the elder wand, anyone else posting here will have points deducted
                       from their house!
                     posted_at: '2024-07-21T23:56:18.074Z'
-                    archived_at: 
-                    deleted_at: 
-                    edited_at: 
+                    archived_at:
+                    deleted_at:
+                    edited_at:
                     state: posted
                     created_at: '2024-07-21T23:56:18.076Z'
                     updated_at: '2024-07-21T23:56:18.076Z'
@@ -623,9 +669,9 @@ paths:
                       the elder wand, anyone else posting here will have points deducted
                       from their house!
                     posted_at: '2024-07-21T23:56:18.074Z'
-                    archived_at: 
-                    deleted_at: 
-                    edited_at: 
+                    archived_at:
+                    deleted_at:
+                    edited_at:
                     state: posted
                     created_at: '2024-07-21T23:56:18.076Z'
                     updated_at: '2024-07-21T23:56:18.076Z'
@@ -658,9 +704,9 @@ paths:
                       the elder wand, anyone else posting here will have points deducted
                       from their house!
                     posted_at: '2024-07-21T23:56:18.074Z'
-                    archived_at: 
+                    archived_at:
                     deleted_at: '2024-07-21T23:59:18.076Z'
-                    edited_at: 
+                    edited_at:
                     state: posted
                     created_at: '2024-07-21T23:56:18.076Z'
                     updated_at: '2024-07-21T23:56:18.076Z'
@@ -690,9 +736,9 @@ paths:
                     content: Hey everyone, since we are all over the world, let's
                       talk about how the local weather
                     posted_at: '2024-07-21T23:56:17.969Z'
-                    archived_at: 
-                    deleted_at: 
-                    edited_at: 
+                    archived_at:
+                    deleted_at:
+                    edited_at:
                     state: posted
                     created_at: '2024-07-21T23:56:17.989Z'
                     updated_at: '2024-07-21T23:56:17.989Z'
@@ -704,9 +750,9 @@ paths:
                     content: This is the discussion to help each other with the chicken/sauce
                       ratio calculations questions
                     posted_at: '2024-07-21T23:56:18.038Z'
-                    archived_at: 
-                    deleted_at: 
-                    edited_at: 
+                    archived_at:
+                    deleted_at:
+                    edited_at:
                     state: posted
                     created_at: '2024-07-21T23:56:18.040Z'
                     updated_at: '2024-07-21T23:56:18.040Z'
@@ -719,9 +765,9 @@ paths:
                       the elder wand, anyone else posting here will have points deducted
                       from their house!
                     posted_at: '2024-07-21T23:56:18.074Z'
-                    archived_at: 
-                    deleted_at: 
-                    edited_at: 
+                    archived_at:
+                    deleted_at:
+                    edited_at:
                     state: posted
                     created_at: '2024-07-21T23:56:18.076Z'
                     updated_at: '2024-07-21T23:56:18.076Z'
@@ -758,9 +804,9 @@ paths:
                       the elder wand, anyone else posting here will have points deducted
                       from their house!
                     posted_at: '2024-07-21T23:56:18.074Z'
-                    archived_at: 
+                    archived_at:
                     deleted_at: '2024-07-21T23:59:18.076Z'
-                    edited_at: 
+                    edited_at:
                     state: posted
                     created_at: '2024-07-21T23:56:18.076Z'
                     updated_at: '2024-07-21T23:56:18.076Z'

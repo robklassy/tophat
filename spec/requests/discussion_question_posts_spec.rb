@@ -94,7 +94,7 @@ RSpec.describe 'discussion_question_posts', type: :request do
           "deleted_at"=>nil,
           "edited_at"=>nil,
           "state"=>nil,
-          "like_count"=>-1,
+          "like_count"=>5,
           "discussion_question_id"=>"731b457a-245c-4878-83da-8ca15b812714",
           "created_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
           "updated_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
