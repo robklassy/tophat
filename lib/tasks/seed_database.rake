@@ -115,7 +115,7 @@ namespace :db do
           user_type: 'Student',
           content: discussion_questions[i][:discussion_question_posts].first[:content],
           posted_at: Time.zone.now,
-          like_count: 1
+          like_count: 0
         )
         dqp.save!
 
@@ -127,7 +127,7 @@ namespace :db do
           user_type: 'Student',
           content: discussion_questions[i][:discussion_question_posts].first[:content] + "child post",
           posted_at: Time.zone.now,
-          like_count: 1
+          like_count: 0
         )
         child_dqp.save!
 
@@ -139,7 +139,7 @@ namespace :db do
           user_type: 'Student',
           content: discussion_questions[i][:discussion_question_posts].first[:content] + "child post another onnneee",
           posted_at: Time.zone.now,
-          like_count: 1
+          like_count: 0
         )
         child_dqp2.save!
       end

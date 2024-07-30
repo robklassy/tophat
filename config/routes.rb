@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     member do
       put 'like'
       put 'dislike'
+      put 'cancel_rating'
     end
   end
 

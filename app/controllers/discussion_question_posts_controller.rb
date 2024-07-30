@@ -83,7 +83,7 @@ class DiscussionQuestionPostsController < ApplicationController
       user_type: params['user_type'],
       discussion_question_post_id: @dqp.id
     )
-    increment = false
+    increment = 0
 
     if rating.blank?
       rating = DiscussionQuestionPostRating.new(
@@ -93,18 +93,17 @@ class DiscussionQuestionPostsController < ApplicationController
         liked: true
       )
       rating.save!
-      increment = true
+      increment = 1
     else
       if !rating.liked?
         rating.liked = true
         rating.save!
-        increment = true
+        increment = 2
       end
     end
 
-    if increment
-      @dqp.like_count ||= 0
-      @dqp.like_count += 1
+    if increment != 0
+      @dqp.like_count += increment
       @dqp.save!
     end
 
@@ -119,7 +118,7 @@ class DiscussionQuestionPostsController < ApplicationController
       user_type: params['user_type'],
       discussion_question_post_id: @dqp.id
     )
-    decrement = false
+    decrement = 0
 
     if rating.blank?
       rating = DiscussionQuestionPostRating.new(
@@ -129,19 +128,40 @@ class DiscussionQuestionPostsController < ApplicationController
         liked: false
       )
       rating.save!
-      decrement = true
+      decrement = -1
     else
       if rating.liked?
         rating.liked = false
         rating.save!
-        decrement = true
+        decrement = -2
       end
     end
 
-    if decrement
-      @dqp.like_count ||= 0
-      @dqp.like_count -= 1
+    if decrement != 0
+      @dqp.like_count += decrement
       @dqp.save!
+    end
+
+    render json: @dqp, status: :ok
+  end
+
+  def cancel_rating
+    params.permit!
+    @dqp = DiscussionQuestionPost.find_by(id: params['id'])
+    rating = DiscussionQuestionPostRating.find_by(
+      user_id: params['user_id'],
+      user_type: params['user_type'],
+      discussion_question_post_id: @dqp.id
+    )
+
+    if rating.present?
+      if rating.liked?
+        @dqp.like_count -= 1
+        @dqp.save!
+      else
+        @dqp.like_count += 1
+        @dqp.save!
+      end
     end
 
     render json: @dqp, status: :ok

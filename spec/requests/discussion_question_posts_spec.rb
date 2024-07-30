@@ -61,7 +61,78 @@ RSpec.describe 'discussion_question_posts', type: :request do
         end
         run_test! do |response|
           data = JSON.parse(response.body)
-          expect(data['like_count'].to_i).to eq(2)
+          expect(data['like_count'].to_i).to eq(1)
+        end
+      end
+    end
+  end
+
+  path '/discussion_question_posts/{id}/cancel_rating' do
+    parameter name: 'id', in: :path, type: :string, description: 'id'
+
+    put('cancel rating on discussion_question_post') do
+      consumes 'application/json'
+      produces 'application/json'
+
+      parameter name: :user, in: :body, schema: {
+        type: :object,
+        properties: {
+          user_id: { type: :string },
+          user_type: { type: :string }
+        }
+      }
+
+      response(200, 'successful') do
+        example 'application/json', :discussion_question_post, {
+          "id"=>"48914fd6-5024-4525-a8b2-9e7d4d108d81",
+          "course_id"=>"0c8afa68-8cd3-4406-9d8f-6708cedf8f01",
+          "user_id"=>"4e803bd5-b0c5-4b95-8f13-4d393842e21b",
+          "content"=>
+          "Professor would it make sense just to you know, break the wand into a million pieces or something so voldy cannot get it?",
+          "posted_at"=>"Sun, 21 Jul 2024 23:56:18.078392000 UTC +00:00",
+          "archived_at"=>nil,
+          "deleted_at"=>nil,
+          "edited_at"=>nil,
+          "state"=>nil,
+          "like_count"=>-1,
+          "discussion_question_id"=>"731b457a-245c-4878-83da-8ca15b812714",
+          "created_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "updated_at"=>"Sun, 21 Jul 2024 23:56:18.080696000 UTC +00:00",
+          "discussion_question_post_id"=>nil,
+          "user_type"=>"Student"
+        }
+        let(:user) do
+          u = User.all.sample
+          {
+            user_id: u.id,
+            user_type: u.type
+          }
+        end
+        let(:id) do
+          dqp = DiscussionQuestionPost.all.last
+          r = DiscussionQuestionPostRating.new(
+            discussion_question_post: dqp,
+            user_id: user[:user_id],
+            user_type: user[:user_type],
+            liked: false
+          )
+
+          r.save!
+          dqp.update(like_count: 5)
+          dqp.id
+        end
+
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test! do |response|
+          data = JSON.parse(response.body)
+          expect(data['like_count'].to_i).to eq(6)
         end
       end
     end
@@ -119,7 +190,7 @@ RSpec.describe 'discussion_question_posts', type: :request do
         end
         run_test! do |response|
           data = JSON.parse(response.body)
-          expect(data['like_count'].to_i).to eq(0)
+          expect(data['like_count'].to_i).to eq(-1)
         end
       end
     end
